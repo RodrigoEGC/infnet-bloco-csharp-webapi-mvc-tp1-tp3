@@ -47,7 +47,7 @@ namespace MusicLibraryApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=MusicalGroup}/{action=Index}/{id?}");
             });
         }
     }

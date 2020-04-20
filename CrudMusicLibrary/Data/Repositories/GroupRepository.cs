@@ -29,7 +29,7 @@ namespace Data.Repositories
 
         public async Task<GroupEntity> GetByIdAsync(int id)
         {
-            return await _musicLibraryDBContext.MusicalGroups.FirstOrDefaultAsync(x => x.Id == id);
+            return await _musicLibraryDBContext.MusicalGroups.FirstOrDefaultAsync(x => x.GroupId == id);
         }
 
         public async Task InsertAsync(GroupEntity insertedModel)

@@ -50,7 +50,7 @@ namespace MusicLibraryApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,GroupName,MusicalGenre,Beginnings,City,Nation,RecordCompanyn")] GroupEntity groupEntity)
+        public async Task<IActionResult> Create([Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,RecordCompanyn")] GroupEntity groupEntity)
         {
             if (ModelState.IsValid)
             {
@@ -82,9 +82,9 @@ namespace MusicLibraryApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,GroupName,MusicalGenre,Beginnings,City,Nation,RecordCompanyn")] GroupEntity grouEntity)
+        public async Task<IActionResult> Edit(int id, [Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,RecordCompanyn")] GroupEntity grouEntity)
         {
-            if (id != grouEntity.Id)
+            if (id != grouEntity.GroupId)
             {
                 return NotFound();
             }

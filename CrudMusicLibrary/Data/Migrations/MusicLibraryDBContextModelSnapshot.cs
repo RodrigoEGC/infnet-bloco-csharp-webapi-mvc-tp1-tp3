@@ -19,9 +19,32 @@ namespace Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("Domain.Model.Entities.DiscographyEntity", b =>
+                {
+                    b.Property<int>("AlbumId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("GroupEntityGroupId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("AlbumId");
+
+                    b.HasIndex("GroupEntityGroupId");
+
+                    b.ToTable("discographies");
+                });
+
             modelBuilder.Entity("Domain.Model.Entities.GroupEntity", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("GroupId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -49,14 +72,16 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(25)")
                         .HasMaxLength(25);
 
-                    b.Property<string>("RecordCompanyn")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(25)")
-                        .HasMaxLength(25);
-
-                    b.HasKey("Id");
+                    b.HasKey("GroupId");
 
                     b.ToTable("MusicalGroups");
+                });
+
+            modelBuilder.Entity("Domain.Model.Entities.DiscographyEntity", b =>
+                {
+                    b.HasOne("Domain.Model.Entities.GroupEntity", null)
+                        .WithMany("discographyEntities")
+                        .HasForeignKey("GroupEntityGroupId");
                 });
 #pragma warning restore 612, 618
         }

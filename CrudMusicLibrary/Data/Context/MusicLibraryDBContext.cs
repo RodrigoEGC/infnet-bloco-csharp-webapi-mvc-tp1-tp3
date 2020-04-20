@@ -10,5 +10,6 @@ namespace Infrastructure.Data
         {
         }
         public DbSet<GroupEntity> MusicalGroups { get; set; }
+        public DbSet<DiscographyEntity> discographies { get; set; }
     }
 }

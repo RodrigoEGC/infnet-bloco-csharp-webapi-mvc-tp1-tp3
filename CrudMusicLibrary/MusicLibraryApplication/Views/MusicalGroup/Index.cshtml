@@ -4,62 +4,81 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<section class="content-header">
+   <h1>Index</h1>
+</section>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.GroupName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MusicalGenre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Beginnings)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Nation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.RecordCompanyn)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.GroupName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MusicalGenre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Beginnings)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordCompanyn)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<section class="content container-fluid">
+    <hr />
+    <div class="row">
+        <div class="col-lg-8 col-md-6 col-sm-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.GroupName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.MusicalGenre)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Beginnings)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.City)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Nation)
+                        </th>
+                        <th>
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.GroupName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.MusicalGenre)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Beginnings)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.City)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Nation)
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-primary">
+                                    <i class="far fa-edit">
+
+                                    </i>
+                                    @Html.ActionLink("Edit", "Edit", new { Id = item.GroupId })
+                                </button>
+                                <button type="button" class="btn btn-success">
+                                    <i class="fas fa-eye">
+
+                                    </i>
+                                    @Html.ActionLink("Details", "Details", new { Id = item.GroupId })
+                                </button>
+                                <button type="button" class="btn btn-danger">
+                                    <i class="far fa-trash-alt">
+
+                                    </i>
+                                    @Html.ActionLink("Delete", "Delete", new { Id = item.GroupId })
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+
