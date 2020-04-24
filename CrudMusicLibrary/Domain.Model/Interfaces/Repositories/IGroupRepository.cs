@@ -16,5 +16,8 @@ namespace Domain.Model.Interfaces.Repositories
 
         Task UpdateAsync(GroupEntity updatedModel);
 
+        Task <bool> CheckMascotAsync(string mascot, int id = -1);
+
+        Task<GroupEntity> GetByMascotAsync(string mascot);
     }
 }

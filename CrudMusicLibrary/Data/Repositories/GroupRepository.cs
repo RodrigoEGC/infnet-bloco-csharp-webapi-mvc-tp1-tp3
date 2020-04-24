@@ -43,5 +43,18 @@ namespace Data.Repositories
             _musicLibraryDBContext.Update(updatedModel);
             await _musicLibraryDBContext.SaveChangesAsync();
         }
+
+        public async Task<bool> CheckMascotAsync(string mascot, int id = -1)
+        {
+            var mascotExists = await _musicLibraryDBContext.MusicalGroups.AnyAsync(x =>
+                x.BandMascot == mascot && x.GroupId != id);
+            return mascotExists;
+        }
+
+        public async Task<GroupEntity> GetByMascotAsync(string mascot)
+        {
+            return await _musicLibraryDBContext.MusicalGroups.SingleOrDefaultAsync(x => 
+                x.BandMascot == mascot);
+        }
     }
 }

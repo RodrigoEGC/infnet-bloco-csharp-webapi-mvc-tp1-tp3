@@ -31,6 +31,9 @@
                             @Html.DisplayNameFor(model => model.Nation)
                         </th>
                         <th>
+                            @Html.DisplayNameFor(model => model.BandMascot)
+                        </th>
+                        <th>
                             Action
                         </th>
                     </tr>
@@ -38,43 +41,46 @@
                 <tbody>
                     @foreach (var item in Model)
                     {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.GroupName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.MusicalGenre)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Beginnings)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.City)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Nation)
-                            </td>
-                            <td>
-                                <button type="button" class="btn btn-primary">
-                                    <i class="far fa-edit">
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GroupName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MusicalGenre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Beginnings)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BandMascot)
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary">
+                                <i class="far fa-edit">
 
-                                    </i>
-                                    @Html.ActionLink("Edit", "Edit", new { Id = item.GroupId })
-                                </button>
-                                <button type="button" class="btn btn-success">
-                                    <i class="fas fa-eye">
+                                </i>
+                                @Html.ActionLink("Edit", "Edit", new { Id = item.GroupId })
+                            </button>
+                            <button type="button" class="btn btn-success">
+                                <i class="fas fa-eye">
 
-                                    </i>
-                                    @Html.ActionLink("Details", "Details", new { Id = item.GroupId })
-                                </button>
-                                <button type="button" class="btn btn-danger">
-                                    <i class="far fa-trash-alt">
+                                </i>
+                                @Html.ActionLink("Details", "Details", new { Id = item.GroupId })
+                            </button>
+                            <button type="button" class="btn btn-danger">
+                                <i class="far fa-trash-alt">
 
-                                    </i>
-                                    @Html.ActionLink("Delete", "Delete", new { Id = item.GroupId })
-                                </button>
-                            </td>
-                        </tr>
+                                </i>
+                                @Html.ActionLink("Delete", "Delete", new { Id = item.GroupId })
+                            </button>
+                        </td>
+                    </tr>
                     }
                 </tbody>
             </table>

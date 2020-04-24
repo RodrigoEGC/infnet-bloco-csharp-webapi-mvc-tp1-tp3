@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Domain.Model.Interfaces.Repositories;
 using Domain.Model.Entities;
+using Domain.Model.Exceptions;
 
 namespace Domain.Service.Services
 {
@@ -31,11 +32,21 @@ namespace Domain.Service.Services
 
         public async Task InsertAsync(GroupEntity insertedModel)
         {
+            var mascotExists = await _groupRepository.CheckMascotAsync(insertedModel.BandMascot);
+            if (mascotExists)
+            {
+                throw new EntityValidationException(nameof(GroupEntity.BandMascot), "Mascot pertence a outra banda!");
+            }
             await _groupRepository.InsertAsync(insertedModel);
         }
 
         public async Task UpdateAsync(GroupEntity updatedModel)
         {
+            var mascotExists = await _groupRepository.CheckMascotAsync(updatedModel.BandMascot, updatedModel.GroupId);
+            if (mascotExists)
+            {
+                throw new EntityValidationException(nameof(GroupEntity.BandMascot), "Mascot pertence a outra banda!");
+            }
             await _groupRepository.UpdateAsync(updatedModel);
         }
     }

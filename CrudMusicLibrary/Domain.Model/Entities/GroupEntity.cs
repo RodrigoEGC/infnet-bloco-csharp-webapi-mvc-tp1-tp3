@@ -31,10 +31,13 @@ namespace Domain.Model.Entities
         public string City { get; set; }
 
         [StringLength(25, MinimumLength = 3)]
-        [Required(ErrorMessage = "Este campo é obrigatório")]
-
+        [Required(ErrorMessage = "Este campo é obrigatório")] 
         public string Nation { get; set; }
 
+        [StringLength(25, MinimumLength = 3)]
+        [Required(ErrorMessage = "Este campo é obrigatório")]
+        public string BandMascot { get; set; }
         public ICollection<DiscographyEntity> discographyEntities { get; set; }
+
     }
 }

@@ -1,7 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Domain.Model.Entities;
+using Domain.Model.Exceptions;
 using Domain.Model.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.EntityFrameworkCore;
 
 namespace MusicLibraryApplication.Controllers
@@ -50,13 +52,19 @@ namespace MusicLibraryApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,RecordCompanyn")] GroupEntity groupEntity)
+        public async Task<IActionResult> Create([Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,BandMascot")] GroupEntity groupEntity)
         {
             if (ModelState.IsValid)
             {
-                
-                await _groupService.InsertAsync(groupEntity);
-                return RedirectToAction(nameof(Index));
+                try
+                { 
+                    await _groupService.InsertAsync(groupEntity);
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (EntityValidationException e)
+                {
+                    ModelState.AddModelError(e.PropertyName, e.Message);
+                }
             }
             return View(groupEntity);
         }
@@ -82,7 +90,7 @@ namespace MusicLibraryApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,RecordCompanyn")] GroupEntity grouEntity)
+        public async Task<IActionResult> Edit(int id, [Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,BandMascot")] GroupEntity grouEntity)
         {
             if (id != grouEntity.GroupId)
             {
@@ -96,6 +104,12 @@ namespace MusicLibraryApplication.Controllers
 
                     await _groupService.UpdateAsync(grouEntity);
                 }
+                catch (EntityValidationException e)
+                {
+                    ModelState.AddModelError(e.PropertyName, e.Message);
+                    return View(grouEntity);
+                }
+
                 catch (DbUpdateConcurrencyException)
                 {
                     if (await _groupService.GetByIdAsync(id) == null)
