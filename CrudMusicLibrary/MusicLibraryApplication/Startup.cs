@@ -20,6 +20,7 @@ namespace MusicLibraryApplication
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddRazorPages();
             DependencyInjection.Register(services, Configuration);
         }
 
@@ -29,6 +30,7 @@ namespace MusicLibraryApplication
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             else
             {
@@ -43,11 +45,14 @@ namespace MusicLibraryApplication
 
             app.UseAuthorization();
 
+            app.UseAuthentication();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=MusicalGroup}/{action=Index}/{id?}");
+                endpoints.MapRazorPages();
             });
         }
     }

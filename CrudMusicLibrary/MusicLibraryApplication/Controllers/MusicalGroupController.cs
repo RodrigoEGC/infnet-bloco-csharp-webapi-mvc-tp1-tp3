@@ -2,6 +2,7 @@
 using Domain.Model.Entities;
 using Domain.Model.Exceptions;
 using Domain.Model.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.EntityFrameworkCore;
