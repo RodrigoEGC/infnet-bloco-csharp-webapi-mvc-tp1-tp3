@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(MusicLibraryDBContext))]
-    [Migration("20200422124854_InsertCollumEValidationCustom")]
-    partial class InsertCollumEValidationCustom
+    [Migration("20200513023407_InitalCreate")]
+    partial class InitalCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -41,7 +41,7 @@ namespace Data.Migrations
 
                     b.HasIndex("GroupEntityGroupId");
 
-                    b.ToTable("discographies");
+                    b.ToTable("Discographies");
                 });
 
             modelBuilder.Entity("Domain.Model.Entities.GroupEntity", b =>
@@ -87,7 +87,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.Model.Entities.DiscographyEntity", b =>
                 {
                     b.HasOne("Domain.Model.Entities.GroupEntity", null)
-                        .WithMany("discographyEntities")
+                        .WithMany("DiscographyEntities")
                         .HasForeignKey("GroupEntityGroupId");
                 });
 #pragma warning restore 612, 618

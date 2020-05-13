@@ -37,7 +37,7 @@ namespace Domain.Model.Entities
         [StringLength(25, MinimumLength = 3)]
         [Required(ErrorMessage = "Este campo é obrigatório")]
         public string BandMascot { get; set; }
-        public ICollection<DiscographyEntity> discographyEntities { get; set; }
+        public ICollection<DiscographyEntity> DiscographyEntities { get; set; }
 
     }
 }

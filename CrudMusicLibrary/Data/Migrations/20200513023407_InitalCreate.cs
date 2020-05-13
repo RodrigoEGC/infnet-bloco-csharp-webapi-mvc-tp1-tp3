@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Data.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class InitalCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -17,7 +17,8 @@ namespace Data.Migrations
                     MusicalGenre = table.Column<string>(maxLength: 60, nullable: false),
                     Beginnings = table.Column<DateTime>(nullable: false),
                     City = table.Column<string>(maxLength: 25, nullable: false),
-                    Nation = table.Column<string>(maxLength: 25, nullable: false)
+                    Nation = table.Column<string>(maxLength: 25, nullable: false),
+                    BandMascot = table.Column<string>(maxLength: 25, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +26,7 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "discographies",
+                name: "Discographies",
                 columns: table => new
                 {
                     AlbumId = table.Column<int>(nullable: false)
@@ -36,9 +37,9 @@ namespace Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_discographies", x => x.AlbumId);
+                    table.PrimaryKey("PK_Discographies", x => x.AlbumId);
                     table.ForeignKey(
-                        name: "FK_discographies_MusicalGroups_GroupEntityGroupId",
+                        name: "FK_Discographies_MusicalGroups_GroupEntityGroupId",
                         column: x => x.GroupEntityGroupId,
                         principalTable: "MusicalGroups",
                         principalColumn: "GroupId",
@@ -46,15 +47,15 @@ namespace Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_discographies_GroupEntityGroupId",
-                table: "discographies",
+                name: "IX_Discographies_GroupEntityGroupId",
+                table: "Discographies",
                 column: "GroupEntityGroupId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "discographies");
+                name: "Discographies");
 
             migrationBuilder.DropTable(
                 name: "MusicalGroups");
