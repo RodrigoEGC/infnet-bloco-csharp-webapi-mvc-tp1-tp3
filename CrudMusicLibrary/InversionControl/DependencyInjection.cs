@@ -11,8 +11,8 @@ namespace InversionOfControl
 {
     public static class DependencyInjection
     {
-        public static void Register(
-           IServiceCollection services,
+        public static void RegisterInjections(
+           this IServiceCollection services,
            IConfiguration configuration)
         {
             services.AddDbContext<MusicLibraryDBContext>(option =>

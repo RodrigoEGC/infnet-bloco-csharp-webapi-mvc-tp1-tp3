@@ -1,4 +1,5 @@
-﻿using InversionOfControl;
+﻿using Crosscutting.Identity;
+using InversionOfControl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -21,7 +22,8 @@ namespace MusicLibraryApplication
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            DependencyInjection.Register(services, Configuration);
+            services.RegisterInjections(Configuration);
+            services.RegisterIdentity(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

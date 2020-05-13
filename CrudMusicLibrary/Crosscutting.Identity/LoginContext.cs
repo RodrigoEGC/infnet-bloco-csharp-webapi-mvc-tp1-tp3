@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace MusicLibraryApplication.Areas.Identity.Data
+namespace Crosscutting.Identity
 {
     public class LoginContext : IdentityDbContext<IdentityUser>
     {
         public LoginContext(DbContextOptions<LoginContext> options)
-            : base(options)
+             : base(options)
         {
-        }
 
+        }
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
