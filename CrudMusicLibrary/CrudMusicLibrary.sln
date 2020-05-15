@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicLibraryApplication", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 -Presentation", "01 -Presentation", "{C16A4D23-2145-4B45-AD7F-9534B4C81D2C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Domain", "02 - Domain", "{927C7BB5-0232-48D3-B888-6FCD1B2DCD18}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Domain", "03 - Domain", "{927C7BB5-0232-48D3-B888-6FCD1B2DCD18}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Infrastructure", "03 - Infrastructure", "{1D7CD690-8336-4577-A8B0-D4646A7ED835}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Infrastructure", "04 - Infrastructure", "{1D7CD690-8336-4577-A8B0-D4646A7ED835}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Crosscutting", "04 - Crosscutting", "{3B505D3E-8663-4373-892B-387CCFCF9BB2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 - Crosscutting", "05 - Crosscutting", "{3B505D3E-8663-4373-892B-387CCFCF9BB2}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.Model", "Domain.Model\Domain.Model.csproj", "{7D39EC66-1BA6-453C-8822-CA7783A1E994}"
 EndProject
@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "InversionOfControl", "InversionControl\InversionOfControl.csproj", "{21B89AE8-4CE6-4857-BE26-EFF57D838C07}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Crosscutting.Identity", "Crosscutting.Identity\Crosscutting.Identity.csproj", "{8B640079-CEE6-4536-B16C-285CD4FF4B4D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Crosscutting.Identity", "Crosscutting.Identity\Crosscutting.Identity.csproj", "{8B640079-CEE6-4536-B16C-285CD4FF4B4D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 - Application", "02 - Application", "{25D23519-14CD-45D8-9B76-891FF192E53F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "WebApi\WebApi.csproj", "{48BBEAA9-DD78-4C20-9233-43A2C048DB7B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,10 @@ Global
 		{8B640079-CEE6-4536-B16C-285CD4FF4B4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B640079-CEE6-4536-B16C-285CD4FF4B4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B640079-CEE6-4536-B16C-285CD4FF4B4D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48BBEAA9-DD78-4C20-9233-43A2C048DB7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48BBEAA9-DD78-4C20-9233-43A2C048DB7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48BBEAA9-DD78-4C20-9233-43A2C048DB7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48BBEAA9-DD78-4C20-9233-43A2C048DB7B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +72,7 @@ Global
 		{1B957F53-B9E3-42C2-88C5-2898F40EE1F4} = {1D7CD690-8336-4577-A8B0-D4646A7ED835}
 		{21B89AE8-4CE6-4857-BE26-EFF57D838C07} = {3B505D3E-8663-4373-892B-387CCFCF9BB2}
 		{8B640079-CEE6-4536-B16C-285CD4FF4B4D} = {3B505D3E-8663-4373-892B-387CCFCF9BB2}
+		{48BBEAA9-DD78-4C20-9233-43A2C048DB7B} = {25D23519-14CD-45D8-9B76-891FF192E53F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {37D1DD67-C5AA-4B93-9FFA-B48FED901CCE}
