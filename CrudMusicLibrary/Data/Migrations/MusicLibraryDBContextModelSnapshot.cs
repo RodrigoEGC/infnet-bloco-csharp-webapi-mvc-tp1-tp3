@@ -39,7 +39,7 @@ namespace Data.Migrations
 
                     b.HasIndex("GroupEntityGroupId");
 
-                    b.ToTable("discographies");
+                    b.ToTable("Discographies");
                 });
 
             modelBuilder.Entity("Domain.Model.Entities.GroupEntity", b =>
@@ -48,6 +48,11 @@ namespace Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("BandMascot")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(25)")
+                        .HasMaxLength(25);
 
                     b.Property<DateTime>("Beginnings")
                         .HasColumnType("datetime2");
@@ -80,7 +85,7 @@ namespace Data.Migrations
             modelBuilder.Entity("Domain.Model.Entities.DiscographyEntity", b =>
                 {
                     b.HasOne("Domain.Model.Entities.GroupEntity", null)
-                        .WithMany("discographyEntities")
+                        .WithMany("DiscographyEntities")
                         .HasForeignKey("GroupEntityGroupId");
                 });
 #pragma warning restore 612, 618
