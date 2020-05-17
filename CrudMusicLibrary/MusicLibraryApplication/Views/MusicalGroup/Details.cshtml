@@ -51,8 +51,12 @@
     </dl>
 
     <div>
-        <a asp-action="Edit" asp-route-id="@Model.GroupId">Edit</a> |
-        <a asp-action="Index">Back to List</a>
+        <button type="button" class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.GroupId">
+            @Html.ActionLink("Edit", "Edit", new { Id = @Model.GroupId })
+        </button> |
+        <button type="button" class="btn btn-primary">
+            @Html.ActionLink("Back", "Index")
+        </button>
     </div>
 </section>
 

@@ -36,11 +36,11 @@ namespace Domain.Model.Entities
         public string Nation { get; set; }
 
         [StringLength(25, MinimumLength = 3)]
+         [Required(ErrorMessage = "Este campo é obrigatório")]
         [Remote(
             action: "CheckMascot",
             controller: "MusicalGroup",
             AdditionalFields = nameof(GroupId))]
-        [Required(ErrorMessage = "Este campo é obrigatório")]
         public string BandMascot { get; set; }
         public ICollection<DiscographyEntity> DiscographyEntities { get; set; }
 

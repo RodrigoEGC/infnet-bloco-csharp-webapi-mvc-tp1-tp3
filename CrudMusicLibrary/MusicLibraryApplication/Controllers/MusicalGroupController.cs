@@ -4,7 +4,6 @@ using Domain.Model.Exceptions;
 using Domain.Model.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using MusicLibraryApplication.HttpServices;
 
 namespace MusicLibraryApplication.Controllers
 {
