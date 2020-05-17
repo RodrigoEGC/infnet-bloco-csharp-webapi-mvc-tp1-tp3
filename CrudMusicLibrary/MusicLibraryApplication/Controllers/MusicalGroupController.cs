@@ -2,10 +2,9 @@
 using Domain.Model.Entities;
 using Domain.Model.Exceptions;
 using Domain.Model.Interfaces.Services;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.TagHelpers;
 using Microsoft.EntityFrameworkCore;
+using MusicLibraryApplication.HttpServices;
 
 namespace MusicLibraryApplication.Controllers
 {
@@ -21,7 +20,8 @@ namespace MusicLibraryApplication.Controllers
         // GET: MusicalGroup
         public async Task<IActionResult> Index()
         {
-            return View(await _groupService.GetAllAsync());
+            var group = await _groupService.GetAllAsync();
+            return View(group);
         }
 
         // GET: MusicalGroup/Details/5
@@ -151,6 +151,17 @@ namespace MusicLibraryApplication.Controllers
         {
             await _groupService.DeleteAsync(id);
             return RedirectToAction(nameof(Index));
+        }
+
+        [AcceptVerbs("GET", "POST")]
+        public async Task<IActionResult> CheckMascot(string mascot, int id)
+        {
+            if (await _groupService.CheckMascotAsync(mascot, id))
+            {
+                return Json($"Band Mascot {mascot} já existe!");
+            }
+
+            return Json(true);
         }
     }
 }

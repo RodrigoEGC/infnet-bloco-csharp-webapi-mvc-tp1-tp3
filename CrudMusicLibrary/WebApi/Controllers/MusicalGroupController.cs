@@ -109,5 +109,13 @@ namespace WebApi.Controllers
 
             return groupEntity;
         }
+
+        [HttpGet("CheckMascot/{mascot}/{id}")]
+        public async Task<ActionResult<bool>> CheckMascotAsync(string mascot, int id)
+        {
+            var isMascotValid = await _groupService.CheckMascotAsync(mascot, id);
+
+            return isMascotValid;
+        }
     }
 }

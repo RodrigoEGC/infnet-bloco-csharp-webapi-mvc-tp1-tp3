@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -35,6 +36,10 @@ namespace Domain.Model.Entities
         public string Nation { get; set; }
 
         [StringLength(25, MinimumLength = 3)]
+        [Remote(
+            action: "CheckMascot",
+            controller: "MusicalGroup",
+            AdditionalFields = nameof(GroupId))]
         [Required(ErrorMessage = "Este campo é obrigatório")]
         public string BandMascot { get; set; }
         public ICollection<DiscographyEntity> DiscographyEntities { get; set; }

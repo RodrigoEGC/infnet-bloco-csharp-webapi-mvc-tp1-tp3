@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <UserSecretsId>3148d0e7-900c-49a6-b61a-c41695c823a0</UserSecretsId>
   </PropertyGroup>
 
@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj" />
-    <ProjectReference Include="..\Domain.Service\Domain.Service.csproj" />
   </ItemGroup>
 
 </Project>

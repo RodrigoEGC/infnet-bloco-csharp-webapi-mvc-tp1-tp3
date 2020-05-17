@@ -16,5 +16,6 @@ namespace Domain.Model.Interfaces.Services
 
         Task InsertAsync(GroupEntity insertedModel);
 
+        Task<bool> CheckMascotAsync(string mascot, int id = -1);
     }
 }

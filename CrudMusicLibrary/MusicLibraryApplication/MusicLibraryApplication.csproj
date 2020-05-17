@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Crosscutting.Identity\Crosscutting.Identity.csproj" />
     <ProjectReference Include="..\Domain.Model\Domain.Model.csproj" />
+    <ProjectReference Include="..\Domain.Service\Domain.Service.csproj" />
     <ProjectReference Include="..\InversionControl\InversionOfControl.csproj" />
   </ItemGroup>
 

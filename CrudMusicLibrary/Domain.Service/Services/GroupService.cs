@@ -30,24 +30,29 @@ namespace Domain.Service.Services
             return await _groupRepository.GetByIdAsync(id);
         }
 
-        public async Task InsertAsync(GroupEntity insertedModel)
+        public async Task InsertAsync(GroupEntity insertedEntity)
         {
-            var mascotExists = await _groupRepository.CheckMascotAsync(insertedModel.BandMascot);
+            var mascotExists = await _groupRepository.CheckMascotAsync(insertedEntity.BandMascot);
             if (mascotExists)
             {
                 throw new EntityValidationException(nameof(GroupEntity.BandMascot), "Mascot pertence a outra banda!");
             }
-            await _groupRepository.InsertAsync(insertedModel);
+            await _groupRepository.InsertAsync(insertedEntity);
         }
 
-        public async Task UpdateAsync(GroupEntity updatedModel)
+        public async Task UpdateAsync(GroupEntity updatedEntity)
         {
-            var mascotExists = await _groupRepository.CheckMascotAsync(updatedModel.BandMascot, updatedModel.GroupId);
+            var mascotExists = await _groupRepository.CheckMascotAsync(updatedEntity.BandMascot, updatedEntity.GroupId);
             if (mascotExists)
             {
                 throw new EntityValidationException(nameof(GroupEntity.BandMascot), "Mascot pertence a outra banda!");
             }
-            await _groupRepository.UpdateAsync(updatedModel);
+            await _groupRepository.UpdateAsync(updatedEntity);
+        }
+
+        public async Task<bool> CheckMascotAsync(string mascot, int id = -1)
+        {
+            return await _groupRepository.CheckMascotAsync(mascot, id);
         }
     }
 }

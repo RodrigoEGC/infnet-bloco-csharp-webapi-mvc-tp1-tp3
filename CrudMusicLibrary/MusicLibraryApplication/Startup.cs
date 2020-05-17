@@ -1,10 +1,16 @@
 ﻿using Crosscutting.Identity;
+using Domain.Model.Interfaces.Services;
+using Domain.Model.Options;
 using InversionOfControl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MusicLibraryApplication.Extensions;
+using MusicLibraryApplication.HttpServices;
+using System;
 
 namespace MusicLibraryApplication
 {
@@ -22,7 +28,16 @@ namespace MusicLibraryApplication
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.RegisterInjections(Configuration);
+
+            services.RegisterDataAccess(Configuration);
+
+            var musicLibraryHttpOptionsSection = Configuration.GetSection(nameof(MusicLibraryHttpOptions));
+
+            services.AddHttpClient(musicLibraryHttpOptionsSection["Name"], x => { x.BaseAddress = new Uri(musicLibraryHttpOptionsSection["ApiBaseUrl"]); });
+
+            services.AddScoped<IGroupService, GroupHttpService>();
+
+            services.RegisterConfigurations(Configuration);
             services.RegisterIdentity(Configuration);
         }
 
