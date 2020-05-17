@@ -50,7 +50,7 @@ namespace Domain.Service.Services
             await _groupRepository.UpdateAsync(updatedEntity);
         }
 
-        public async Task<bool> CheckMascotAsync(string mascot, int id = -1)
+        public async Task<bool> CheckMascotAsync(string mascot, int id)
         {
             return await _groupRepository.CheckMascotAsync(mascot, id);
         }

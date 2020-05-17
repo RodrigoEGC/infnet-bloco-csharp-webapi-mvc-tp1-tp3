@@ -1,4 +1,5 @@
-﻿namespace Domain.Model.Options
+﻿using System;
+namespace Domain.Model.Options
 {
     public class TestOption
     {

@@ -65,14 +65,12 @@ namespace Data.Repositories
         }
         public async Task<GroupEntity> GetByMascotAsync(string mascot)
         {
-            return await _musicLibraryDBContext.MusicalGroups.SingleOrDefaultAsync(x =>
-                x.BandMascot == mascot);
+            return await _musicLibraryDBContext.MusicalGroups.SingleOrDefaultAsync(x => x.BandMascot == mascot);
         }
 
         public async Task<bool> CheckMascotAsync(string mascot, int id = 0)
         {
-            var mascotExists = await _musicLibraryDBContext.MusicalGroups.AnyAsync(x =>
-                x.BandMascot == mascot && x.GroupId != id);
+            var mascotExists = await _musicLibraryDBContext.MusicalGroups.AnyAsync(x => x.BandMascot == mascot && x.GroupId != id);
             return mascotExists;
         }
     }
