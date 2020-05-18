@@ -2,11 +2,13 @@
 using Domain.Model.Entities;
 using Domain.Model.Exceptions;
 using Domain.Model.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace MusicLibraryApplication.Controllers
 {
+    [Authorize]
     public class MusicalGroupController : Controller
     {
         private readonly IGroupService _groupService;
@@ -52,6 +54,7 @@ namespace MusicLibraryApplication.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Policy = "Admin")]
         public async Task<IActionResult> Create([Bind("GroupId,GroupName,MusicalGenre,Beginnings,City,Nation,BandMascot")] GroupEntity groupEntity)
         {
             if (ModelState.IsValid)
