@@ -8,7 +8,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MusicLibraryApplication.Controllers
 {
-    [Authorize]
     public class MusicalGroupController : Controller
     {
         private readonly IGroupService _groupService;

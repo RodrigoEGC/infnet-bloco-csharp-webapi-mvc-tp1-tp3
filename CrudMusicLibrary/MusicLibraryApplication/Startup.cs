@@ -28,18 +28,10 @@ namespace MusicLibraryApplication
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-
-            services.RegisterDataAccess(Configuration);
-
-            var musicLibraryHttpOptionsSection = Configuration.GetSection(nameof(MusicLibraryHttpOptions));
-
-            services.AddHttpClient(musicLibraryHttpOptionsSection["Name"], x => { x.BaseAddress = new Uri(musicLibraryHttpOptionsSection["ApiBaseUrl"]); });
-
-            services.AddScoped<IGroupService, GroupHttpService>();
-
+            services.RegisterHttpClients(Configuration);
             services.RegisterConfigurations(Configuration);
-            services.RegisterIdentity(Configuration);
-
+            services.RegisterDataAccess(Configuration);
+            services.RegisterIdentityForMVC(Configuration);
             services.AddAuthorization(
                 options => options.AddPolicy("Admin", policy => policy.RequireClaim("AdminClaim")));
         }
