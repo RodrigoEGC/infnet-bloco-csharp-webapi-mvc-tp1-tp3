@@ -21,6 +21,8 @@ namespace MusicLibraryApplication.Controllers
         public async Task<IActionResult> Index()
         {
             var group = await _groupService.GetAllAsync();
+            if (group == null)
+                return Redirect("/Identity/Account/Login");
             return View(group);
         }
 

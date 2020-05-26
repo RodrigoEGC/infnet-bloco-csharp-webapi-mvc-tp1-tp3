@@ -18,6 +18,7 @@ namespace MusicLibraryApplication.Extensions
             services.AddHttpClient(musicLibraryHttpOptions.Name, x => { x.BaseAddress = musicLibraryHttpOptions.ApiBaseUrl; });
 
             services.AddScoped<IGroupService, GroupHttpService>();
+            services.AddScoped<IAuthHttpService, AuthHttpService>();
         }
     }
 }

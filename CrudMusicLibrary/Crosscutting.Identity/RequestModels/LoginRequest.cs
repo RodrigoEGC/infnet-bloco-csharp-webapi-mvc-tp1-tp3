@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.RequestModels
+namespace Crosscutting.Identity.RequestModels
 {
     public class LoginRequest
     {

@@ -1,4 +1,5 @@
-﻿using Domain.Model.Options;
+﻿using Crosscutting.Identity.RequestModels;
+using Domain.Model.Options;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -8,7 +9,6 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using WebApi.RequestModels;
 
 namespace WebApi.Controllers
 {
