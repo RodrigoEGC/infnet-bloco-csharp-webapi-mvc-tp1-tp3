@@ -1,10 +1,16 @@
 ﻿using Crosscutting.Identity;
+using Domain.Model.Interfaces.Services;
+using Domain.Model.Options;
 using InversionOfControl;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using MusicLibraryApplication.Extensions;
+using MusicLibraryApplication.HttpServices;
+using System;
 
 namespace MusicLibraryApplication
 {
@@ -22,8 +28,12 @@ namespace MusicLibraryApplication
         {
             services.AddControllersWithViews();
             services.AddRazorPages();
-            services.RegisterInjections(Configuration);
-            services.RegisterIdentity(Configuration);
+            services.RegisterHttpClients(Configuration);
+            services.RegisterConfigurations(Configuration);
+            services.RegisterDataAccess(Configuration);
+            services.RegisterIdentityForMVC(Configuration);
+            services.AddAuthorization(
+                options => options.AddPolicy("Admin", policy => policy.RequireClaim("AdminClaim")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,7 +63,7 @@ namespace MusicLibraryApplication
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=MusicalGroup}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
                 endpoints.MapRazorPages();
             });
         }

@@ -4,9 +4,18 @@
     ViewData["Title"] = "Index";
 }
 
-<section class="content-header">
-   <h1>Index</h1>
-</section>
+    <section class="content-header">
+        <h1>Index</h1>
+        <form asp-action="AddAdminClaim" asp-controller="Identity">
+            <div class="form-group">
+                <label name="email" class="control-label">Email</label>
+                <input name="email" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Claim" class="btn btn-primary" />
+            </div>
+        </form>
+    </section>
 
 <section class="content container-fluid">
     <hr />
@@ -61,13 +70,13 @@
                             @Html.DisplayFor(modelItem => item.BandMascot)
                         </td>
                         <td>
-                            <button type="button" class="btn btn-primary">
+                            <button type="button" class="btn btn-warning">
                                 <i class="far fa-edit">
 
                                 </i>
                                 @Html.ActionLink("Edit", "Edit", new { Id = item.GroupId })
                             </button>
-                            <button type="button" class="btn btn-success">
+                            <button type="button" class="btn btn-info">
                                 <i class="fas fa-eye">
 
                                 </i>

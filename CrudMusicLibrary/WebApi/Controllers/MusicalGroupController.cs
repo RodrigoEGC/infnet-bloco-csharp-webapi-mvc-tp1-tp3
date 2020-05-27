@@ -1,6 +1,7 @@
 ﻿using Domain.Model.Entities;
 using Domain.Model.Exceptions;
 using Domain.Model.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace WebApi.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class MusicalGroupController: ControllerBase
     {
@@ -108,6 +110,14 @@ namespace WebApi.Controllers
             await _groupService.DeleteAsync(id);
 
             return groupEntity;
+        }
+
+        [HttpGet("CheckMascot/{mascot}/{id}")]
+        public async Task<ActionResult<bool>> CheckMascotAsync(string mascot, int id)
+        {
+            var isMascotValid = await _groupService.CheckMascotAsync(mascot, id);
+
+            return isMascotValid;
         }
     }
 }
